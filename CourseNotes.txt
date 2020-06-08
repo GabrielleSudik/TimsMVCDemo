@@ -1,0 +1,30 @@
+This is the MVC .NET Core App.
+Note when you start it up it's just like the 
+boilerplate Razor Pages app.
+Some of the URLs are named slightly different is all.
+
+-- Add the DLL (the Common DB Project) --
+
+Same steps as before: First, copy paste the .dll file
+from the DataLibrary project - bin/Release folder.
+Next, add it as a dependency.
+
+WAIT.
+
+Apparently I referenced it wrong in RzrPagesApp.
+I referenced the one in the Common / DL project,
+when I should have referenced the .dll that was
+copied to the RzrPagesApp project!
+"Wrong" is too strong -- Tim says it's not bad that way
+but referencing in the in-project one is better.
+
+Then add the DataLibrary.dll's package dependencies
+to this project's dependencies (found in .csproj file).
+Go to the DL's .csproj file (in a text editor is fine)
+and copy paste what you need.
+
+An alternative: Manually add them from this project
+using Nuget Package Manager. But copy pasting is easier.
+
+-- Dependency Injection --
+
