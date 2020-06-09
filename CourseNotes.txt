@@ -28,3 +28,6 @@ using Nuget Package Manager. But copy pasting is easier.
 
 -- Dependency Injection --
 
+Check notes in Startup.cs.
+Your notes are more robust in the Razor Pages project.
+But it's basically the same.

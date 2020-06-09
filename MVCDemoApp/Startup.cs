@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DataLibrary.Data;
+using DataLibrary.DB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,20 @@ namespace MVCDemoApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //add this one:
+            //ConnectionStringData is from our Common / DataLibrary project.
+            services.AddSingleton(new ConnectionStringData
+            {
+                SqlConnectionName = "Default" //remember you named/ID'd this somewhere.
+            });
+
+            //add this too:
+            services.AddSingleton<IDataAccess, SqlDb>(); //also from our DataLibrary project.
+
+            //and this:
+            services.AddSingleton<IFoodData, FoodData>();
+            services.AddSingleton<IOrderData, OrderData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
