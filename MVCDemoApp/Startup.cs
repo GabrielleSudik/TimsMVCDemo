@@ -58,15 +58,18 @@ namespace MVCDemoApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
+            app.UseRouting(); //this starts use of routing
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints => //this sets up endpoints for routing
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}"); //controller, action, optional id
+                           //when no other route is written, it will default to Home/Index
+                           //you can change this to whatever you want. Like Orders/Create or Food/List.
+                           //you can also add more to the path, like "something/{controller- ..."                    
             });
         }
     }

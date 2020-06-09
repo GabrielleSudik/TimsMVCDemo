@@ -31,3 +31,39 @@ using Nuget Package Manager. But copy pasting is easier.
 Check notes in Startup.cs.
 Your notes are more robust in the Razor Pages project.
 But it's basically the same.
+
+-- Add the ConnectionString --
+
+appsettings.json -- ConnectionsStrings info.
+Get the string from your TimsDinerDB properties,
+using SQL Server Object Explorer.
+Recall you have "Default" mentioned in various places
+to connect everything.
+
+Tim reminds us we probably don't want to commit
+the connectionString. Either by not committing appsettings file
+or in this project: Manage User Secrets and do stuff.
+(I'm fine with it for these little demos, but good point.)
+
+-- Routing --
+
+Startup.cs
+Check out UseEndpoints() for some notes about routes.
+
+-- Creating Data --
+
+Right click Controllers folder - add new controller -
+pick MVC / Empty (you could pick other MVC ones if you wanted).
+Make sure you name the controller the exact same thing as your route:
+Route = Orders, controller = OrdersController.
+
+OrdersController.cs has your notes.
+
+Also: Models - add - class - name it OrderCreateModel.
+See notes there.
+
+Right-click OrdersController.cs.Create() method name - 
+Add View - name it Create, select its function (create), 
+pick its model class: OrderCreateModel. Now you have a Views/Orders/Create.cshtml.
+See notes there.
+
