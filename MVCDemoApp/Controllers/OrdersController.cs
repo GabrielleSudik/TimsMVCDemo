@@ -69,7 +69,9 @@ namespace MVCDemoApp.Controllers
 
             int id = await _orderData.CreateOrder(order);
 
-            return RedirectToAction("Create"); //sends user back to unfilled Create page.
+            //return RedirectToAction("Create"); //sends user back to unfilled Create page.
+            return RedirectToAction("Display", new { id }); //switched to go to Display page instead, with anon obj of id 
+                                                            //to identify which thing to display.
         }
 
         //the sum of what happens with those two methods:
@@ -79,5 +81,35 @@ namespace MVCDemoApp.Controllers
         //Create(OrderModel) is what "reads" the user's input on .cshtml page,
         //and handles the "inbound" flow of the data.
         //IE, we fake two-way binding.
+
+        //new for reading data:
+        //we need another custom model for this.
+
+        public async Task<IActionResult> Display(int id)
+        {
+            OrderDisplayModel displayOrder = new OrderDisplayModel();
+            displayOrder.Order = await _orderData.GetOrderById(id);
+
+            if (displayOrder.Order != null)
+            {
+                var food = await _foodData.GetFood();
+
+                displayOrder.ItemPurchased = food.Where(x => x.Id == displayOrder.Order.FoodId).FirstOrDefault()?.Title;
+            }
+            //that grabs the title of any food item, if any.
+
+            return View(displayOrder);
+        }
+
+        //new for updating an order:
+
+        [HttpPost]
+        public async Task<IActionResult> Update(int id, string orderName)
+        {
+            await _orderData.UpdateOrderName(id, orderName);
+
+            return RedirectToAction("Display", new { id }); //same view, with updated data.
+        }
+
     }
 }

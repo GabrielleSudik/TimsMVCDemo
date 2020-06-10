@@ -1,0 +1,62 @@
+﻿@model MVCDemoApp.Models.OrderDisplayModel
+
+@{
+    ViewData["Title"] = "Display";
+}
+
+<!--we added the at-model reference manually-->
+
+<h1>Display</h1>
+
+@if (Model.Order is null)
+{
+    <h4>The requested item was not found</h4>
+}
+else
+{
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>Order Name</strong></td>
+                <td>@Model.Order.OrderName</td>
+            </tr>
+            <tr>
+                <td><strong>Order Date</strong></td>
+                <td>@Model.Order.OrderDate</td>
+            </tr>
+            <tr>
+                <td><strong>Order Total</strong></td>
+                <td>@string.Format("{0:C}", Model.Order.Total)</td>
+            </tr>
+            <tr>
+                <td><strong>Item Ordered</strong></td>
+                <td>@Model.ItemPurchased</td>
+            </tr>
+            <tr>
+                <td><strong>Quanity</strong></td>
+                <td>@Model.Order.Quantity</td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+    <form asp-action="Update">
+        <!--ref to Update is how the form knows what method will be used (in OrdersController).-->
+        <!--there are diffs between the syntax on this View compared to the same thing on the Razor Page.-->
+        <!--we do this as a way to fake two-way binding: we manually create name="id" / "orderName"
+            and those values get passed back to the Update() method. at-Model.Order.Id / Name
+            are where the values come from.-->
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input name="id" value="@Model.Order.Id" type="hidden" />
+        <div class="form-group">
+            <label class="control-label">Order Name</label>
+            <input name="orderName" value="@Model.Order.OrderName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update order name here" class="btn btn-primary" />
+        </div>
+    </form>
+}
+
+<!--the table is basically just like the one in Razor Pages app.-->

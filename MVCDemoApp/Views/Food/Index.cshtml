@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DataLibrary.Models.FoodModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!--We manually added the model here.
+    One advantage to adding it ourselve instead of during scaffolding
+    is we can make it whatever we need.
+    Here, we made it an IEnum of the model, not just the model.-->
+
+<h1>Index</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            @*<th>@Html.DisplayNameFor(model => model.Id)</th>*@
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>@Html.DisplayFor(modelItem => item.Id)</td>*@
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!--If you compare this table to the one in Razor Pages app,
+    You'll see there is less hard-coding. I think you an use this syntax
+    in Razor Pages, too. Tim's just showing a different way to do it here.-->

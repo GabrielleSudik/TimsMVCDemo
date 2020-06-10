@@ -67,3 +67,28 @@ Add View - name it Create, select its function (create),
 pick its model class: OrderCreateModel. Now you have a Views/Orders/Create.cshtml.
 See notes there.
 
+-- Reading Data --
+
+OrdersController.cs - see notes. Display() method.
+Also: Models - add - class - name it OrderDisplayModel.
+
+Add another view, based on Display(). (see instructions in last step)
+We kept it as an empty template, so no matching model class.
+
+Display.cshtml
+
+And another view: for Food. We need a new FoodController first. Make it.
+Then use Index() method to create the view.
+You again selected an empty template. 
+
+NOTE the reason to select the template is to provide a list
+of possible models for the page.
+Selecting empty just means you manually type in in the view.
+(Useful for when your templates don't match up with the model you want.)
+
+-- Updating Data --
+
+OrdersController - and we'll add stuff to the Display view:
+Update() method, and in Display.cshtml, the <form asp-action="Update"> stuff.
+
+-- Deleting Data --
