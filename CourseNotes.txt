@@ -101,3 +101,17 @@ And add a bit to Display.cshtml so people can delete the order they look at.
 
 Like Razor Pages, Tim walks through the publishing steps.
 You're not doing it because you can't complete (yet).
+
+-- Summary --
+
+Tim's thoughts on MVC: The lack of non-fake two-way bindings makes MVC not the best.
+You need a lot of code to do simplish things.
+Also separating controllers and views gets overwhelming.
+It was used for a long time because it was better than WebForms.
+But now there are better things.
+
+Some say, just put the business logic somewhere outside the controllers,
+to keep them simpler and focused.
+That works, but then you just have MVC-BLL-DLL and it just gets long.
+
+Tim's recommendation: New apps should probably use something else.
