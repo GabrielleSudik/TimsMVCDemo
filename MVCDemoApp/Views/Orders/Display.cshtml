@@ -37,6 +37,11 @@ else
                 <td>@Model.Order.Quantity</td>
             </tr>
 
+            <tr>
+                <td colspan="2">
+                    <a asp-action="Delete" asp-route-id="Model.Order.Id" class="btn btn-danger">Delete Order</a>
+                </td>
+            </tr>
 
         </tbody>
     </table>

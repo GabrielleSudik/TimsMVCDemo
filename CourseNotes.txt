@@ -92,3 +92,12 @@ OrdersController - and we'll add stuff to the Display view:
 Update() method, and in Display.cshtml, the <form asp-action="Update"> stuff.
 
 -- Deleting Data --
+
+OrdersController - new Delete() method.
+Create the new Delete View with the right-click Delete() way.
+And add a bit to Display.cshtml so people can delete the order they look at.
+
+-- Publishing --
+
+Like Razor Pages, Tim walks through the publishing steps.
+You're not doing it because you can't complete (yet).

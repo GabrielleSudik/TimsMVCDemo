@@ -111,5 +111,27 @@ namespace MVCDemoApp.Controllers
             return RedirectToAction("Display", new { id }); //same view, with updated data.
         }
 
+        //new for deleting orders.
+        //first one gets the order,
+        //second one deletes it.
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var order = await _orderData.GetOrderById(id);
+
+            return View(order);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(OrderModel order)
+            //fyi you only need the order id, an int.
+            //but you need a diff sig for the overloaded method
+            //hence, passing in the whole order not just its id.
+        {
+            await _orderData.DeleteOrder(order.Id);
+
+            return RedirectToAction("Create");
+        }
+
     }
 }
